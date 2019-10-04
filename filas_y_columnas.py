@@ -44,3 +44,48 @@ arr[52] = 1
 
 # Finalmente llamamos a la funcion 
 FilasYColumnas(arr, 10, 6)
+
+
+# aqui va otro comentario profe de como hacer filas y comlumnas 
+
+import numpy as np
+
+def CargarAsientos():
+    global asientos
+    asientos = np.empty([33,6], dtype='object')
+    for i in range(0,33):
+        for j in range(0,6):
+            asientos[i][j] = ' - '
+
+def MostrarAsientos():
+    print('      A     B     C     D     E     F')
+    for i in range(0,33):
+        if i < 9:
+            print(f'{i+1}  {asientos[i]}')
+        else:
+            print(f'{i+1} {asientos[i]}')
+
+def ComprarPasaje(fila, columna):
+    if columna.upper() == 'A':
+        columna = 0
+    elif columna.upper() == 'B':
+        columna = 1
+    elif columna.upper() == 'C':
+        columna = 2
+    elif columna.upper() == 'D':
+        columna = 3
+    elif columna.upper() == 'E':
+        columna = 4
+    elif columna.upper() == 'F':
+        columna = 5
+    else:
+        print('Debe ingresar una columna válida: A, B, C, D, E o F')
+    if columna in (0, 1, 2, 3, 4, 5):
+        if fila in range(0,33):
+            asientos[fila-1, columna]=" X "
+         
+
+CargarAsientos()
+MostrarAsientos()
+ComprarPasaje(1,'A')
+MostrarAsientos()
